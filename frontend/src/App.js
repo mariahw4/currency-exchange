@@ -30,10 +30,13 @@ function App() {
 
         <Container>
           <Row>
-            <Col>
+            <Col sm={4}>
               <Links />
             </Col>
-            <Col>
+            <Col sm={8}>
+             <div className='header-style'>
+              <h1>Currency Exchange App</h1>
+             </div>
               <Routes>
                 <Route exact path="/" element={<Wallet/>} />
                 <Route path="/recipients" element={<Recipients/>} />
