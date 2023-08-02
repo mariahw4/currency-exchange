@@ -2,7 +2,8 @@
 function Recipients (){
     return (
         <>
-        Hello Recipients!!
+       cipients!!
+        
         </>
     )
 }

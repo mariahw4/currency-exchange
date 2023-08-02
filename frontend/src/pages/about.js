@@ -1,7 +1,11 @@
+
 function About (){
     return (
         <>
-        All the info!!
+        
+           <p id='about'> All the Info!!</p>
+        
+        
         </>
     )
 }
