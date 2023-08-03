@@ -11,3 +11,18 @@
   text-align: center;
 }
 
+.accordian-body {
+  font-size: smaller;
+  justify-content: end;
+  text-align:right;
+}
+
+.account-info-left {
+  text-align: left;
+  border-right: 2px solid black;
+  margin: 1rem 0;
+}
+
+.account-info-right {
+  text-align: left;
+}
