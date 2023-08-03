@@ -2,7 +2,7 @@
 function Recipients (){
     return (
         <>
-       cipients!!
+       Recipients!!
         
         </>
     )

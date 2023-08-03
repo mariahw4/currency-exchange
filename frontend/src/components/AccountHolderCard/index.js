@@ -5,16 +5,94 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 
 import { useState } from 'react';
 
-
-import TotalValue from '../Actions/totalValue';
 import userData from "./data";
 
 
 function AccountHolderCard() {
+
+  // total value functions and currency conversion
+
+  const [checkedUSD, setCheckedUSD] = useState(false);
+  const [checkedEUR, setCheckedEUR] = useState(false);
+  const [checkedCHF, setCheckedCHF] = useState(false);
+
+
+  const [totalValueUSD, setTotalValueUSD] = useState(2512);
+  const [totalValueEUR, setTotalValueEUR] = useState(2295);
+  const [totalValueCHF, setTotalValueCHF] = useState(2208);
+
+  const [totalValue, setTotalValue] = useState(0)
+  const [currencyUnits, setCurrencyUnits] = useState('')
+  const [currencySymbol, setCurrencySymbol] = useState('')
+
+  const handleTotalValueUSD = () => {
+
+    setTotalValueUSD((USD_value) + EURtoUSD(EUR_value) + CHFtoUSD(CHF_value))
+    setTotalValue(totalValueUSD)
+    setCurrencyUnits('USD')
+    setCurrencySymbol('$')
+  }
+  const handleTotalValueEUR = () => {
+
+    setTotalValueEUR((EUR_value) + USDtoEUR(USD_value) + CHFtoEUR(CHF_value))
+    setTotalValue(totalValueEUR)
+    setCurrencyUnits('EUR')
+    setCurrencySymbol('€')
+  }
+  const handleTotalValueCHF = () => {
+
+    setTotalValueCHF((CHF_value) + EURtoCHF(EUR_value) + USDtoCHF(USD_value))
+    setTotalValue(totalValueCHF)
+    setCurrencyUnits('CHF')
+    setCurrencySymbol('₣')
+  }
+
+
+  const USDtoEUR = amount => {
+    let USDtoEUR_rate = .91
+    let result = amount * USDtoEUR_rate
+    return result
+  }
+  const EURtoUSD = amount => {
+    let EURtoUSD_rate = 1.09
+    let result = amount * EURtoUSD_rate
+    return result
+  }
+
+  const USDtoCHF = amount => {
+    let USDtoCHF_rate = .88
+    let result = amount * USDtoCHF_rate
+    return result
+  }
+
+  const CHFtoUSD = amount => {
+    let CHFtoUSD_rate = 1.14
+    let result = amount * CHFtoUSD_rate
+    return result
+  }
+
+  const EURtoCHF = amount => {
+    let EURtoCHF_rate = .96
+    let result = amount * EURtoCHF_rate
+    return result
+  }
+
+  const CHFtoEUR = amount => {
+    let CHFtoEUR_rate = 1.04
+    let result = amount * CHFtoEUR_rate
+    return result
+  }
+
+
+
+  // ADD, SEND, CONVERT functions
+
 
   const [showAddUSD, setShowAddUSD] = useState(false);
   const [showAddEUR, setShowAddEUR] = useState(false);
@@ -49,24 +127,24 @@ function AccountHolderCard() {
     console.log('amount', AmountUSD)
     console.log('usd', USD_value)
 
-      setUSD_value(Number(USD_value) + Number(AmountUSD))
-   
+    setUSD_value(Number(USD_value) + Number(AmountUSD))
+
   }
 
   const handleAddEURCurrency = async (e) => {
     e.preventDefault()
 
     setEUR_value(Number(EUR_value) + Number(AmountEUR))
-   
-
-}
-const handleAddCHFCurrency = async (e) => {
-  e.preventDefault()
-
-  setCHF_value(Number(CHF_value) + Number(AmountCHF))
 
 
-}
+  }
+  const handleAddCHFCurrency = async (e) => {
+    e.preventDefault()
+
+    setCHF_value(Number(CHF_value) + Number(AmountCHF))
+
+
+  }
 
   // const handleSendCurrency = async () => {
   //   // this will open a modal saying we don't have function yet
@@ -85,21 +163,78 @@ const handleAddCHFCurrency = async (e) => {
 
   return (
     <>
-   
-   
-    <Accordion defaultActiveKey="0" flush>
-      <Accordion.Item eventKey="0">
 
-        <TotalValue />
 
-      </Accordion.Item>
-      <Container>
-    
+
+      <Accordion defaultActiveKey="0" flush>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            <Col>
+              Total Value: {currencySymbol}{totalValue} in {currencyUnits}
+            </Col>
+            <Col>
+              <p className='details'>expand to toggle Wallet Total</p>
+            </Col>
+          </Accordion.Header>
+          {/* {userData.map((props, idx) => ( */}
+          <Accordion.Body>
+            <ButtonGroup aria-label="Basic example">
+              <ToggleButton
+                id='USD'
+                type="radio"
+                variant="secondary"
+                checked={checkedUSD}
+                name='radio'
+                // value={props.id}
+                onChange={(e) => setCheckedUSD(e.currentTarget.checked)}
+                onClick={handleTotalValueUSD}
+              >
+                USD
+              </ToggleButton>
+            </ButtonGroup>
+          </Accordion.Body>
+          <Accordion.Body>
+            <ButtonGroup aria-label="Basic example">
+              <ToggleButton
+                id='EUR'
+                type="radio"
+                variant="secondary"
+                checked={checkedEUR}
+                name='radio'
+                // value={props.id}
+                onChange={(e) => setCheckedEUR(e.currentTarget.checked)}
+                onClick={handleTotalValueEUR}
+              >
+                EUR
+              </ToggleButton>
+            </ButtonGroup>
+          </Accordion.Body>
+          <Accordion.Body>
+            <ButtonGroup aria-label="Basic example">
+              <ToggleButton
+                id='CHF'
+                type="radio"
+                variant="secondary"
+                checked={checkedCHF}
+                name='radio'
+                // value={props.id}
+                onChange={(e) => setCheckedCHF(e.currentTarget.checked)}
+                onClick={handleTotalValueCHF}
+              >
+                CHF
+              </ToggleButton>
+            </ButtonGroup>
+          </Accordion.Body>
+          {/* ))} */}
+
+        </Accordion.Item>
+        <Container>
+
           <Row>
             <Accordion.Item eventKey='1'>
               <Accordion.Header>
                 <Col >
-                  <h5 className='currency-value'>{USD_value} USD</h5>
+                  <h5 className='currency-value'>${USD_value} USD</h5>
                   <p>US Dollars</p>
                 </Col>
                 <Col>
@@ -128,11 +263,11 @@ const handleAddCHFCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Add Currency in USD</Modal.Title>
                   </Modal.Header>
-                    <Form.Control
-                      type='number'
-                      placeholder={AmountUSD} 
-                      onChange={(e) => setAmountUSD(e.currentTarget.value)}
-                       />
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountUSD}
+                    onChange={(e) => setAmountUSD(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseAddUSD}>
                       Close
@@ -179,7 +314,7 @@ const handleAddCHFCurrency = async (e) => {
             <Accordion.Item eventKey='2'>
               <Accordion.Header>
                 <Col >
-                  <h5 className='currency-value'>{EUR_value} EUR</h5>
+                  <h5 className='currency-value'>€{EUR_value} EUR</h5>
                   <p>Euros</p>
                 </Col>
                 <Col>
@@ -208,11 +343,11 @@ const handleAddCHFCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Add Currency in Euros</Modal.Title>
                   </Modal.Header>
-                    <Form.Control
-                      type='number'
-                      placeholder={AmountEUR}
-                      onChange={(e) => setAmountEUR(e.currentTarget.value)}
-                       />
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountEUR}
+                    onChange={(e) => setAmountEUR(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseAddEUR}>
                       Close
@@ -259,7 +394,7 @@ const handleAddCHFCurrency = async (e) => {
             <Accordion.Item eventKey='3'>
               <Accordion.Header>
                 <Col >
-                  <h5 className='currency-value'>{CHF_value} CHF</h5>
+                  <h5 className='currency-value'>₣{CHF_value} CHF</h5>
                   <p>Swiss Francs</p>
                 </Col>
                 <Col>
@@ -288,11 +423,11 @@ const handleAddCHFCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Add Currency in CHF</Modal.Title>
                   </Modal.Header>
-                    <Form.Control
-                      type='number'
-                      placeholder={AmountCHF}
-                      onChange={(e) => setAmountCHF(e.currentTarget.value)}
-                       />
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountCHF}
+                    onChange={(e) => setAmountCHF(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseAddCHF}>
                       Close
@@ -337,8 +472,8 @@ const handleAddCHFCurrency = async (e) => {
               </Accordion.Body>
             </Accordion.Item>
           </Row>
-      </Container>
-    </Accordion>
+        </Container>
+      </Accordion>
 
     </>
 

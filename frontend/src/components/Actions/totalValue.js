@@ -9,11 +9,13 @@ import { useState } from 'react';
 function TotalValue() {
     // console.log(userData)
 
-    const [checked, setChecked] = useState(false);
+    const [checkedUSD, setCheckedUSD] = useState(false);
+    const [checkedEUR, setCheckedEUR] = useState(false);
+    const [checkedCHF, setCheckedCHF] = useState(false);
    
 
     const [totalValueUSD, setTotalValueUSD] = useState(0);
-    const [totalValueEUR, setTotalValuEUR] = useState(0);
+    const [totalValueEUR, setTotalValueEUR] = useState(0);
     const [totalValueCHF, setTotalValueCHF] = useState(0);
 
 
@@ -25,6 +27,7 @@ function TotalValue() {
     // console.log('dollars value', USD_value)
 
     const handleTotalValueUSD = () => {
+
 
     
     }
@@ -85,10 +88,10 @@ return (
               id='USD'
               type="radio"
               variant="secondary"
-              checked={checked}
+              checked={checkedUSD}
               name='radio'
               // value={props.id}
-              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onChange={(e) => setCheckedUSD(e.currentTarget.checked)}
               onClick={handleCurrencyChange}
               >
                 USD
@@ -101,10 +104,10 @@ return (
               id='EUR'
               type="radio"
               variant="secondary"
-              checked={checked}
+              checked={checkedEUR}
               name='radio'
               // value={props.id}
-              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onChange={(e) => setCheckedEUR(e.currentTarget.checked)}
               onClick={handleCurrencyChange}
               >
                 EUR
@@ -117,10 +120,10 @@ return (
               id='CHF'
               type="radio"
               variant="secondary"
-              checked={checked}
+              checked={checkedCHF}
               name='radio'
               // value={props.id}
-              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onChange={(e) => setCheckedCHF(e.currentTarget.checked)}
               onClick={handleCurrencyChange}
               >
                 CHF
