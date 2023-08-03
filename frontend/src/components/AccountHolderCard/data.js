@@ -1,4 +1,5 @@
 const userData = [
+
     {
         id: '1',
         user: 'Jane Doe',
@@ -34,9 +35,9 @@ const userData = [
         accountNumber: 'XXXXXXXXX',
         wireTransfer: 'XXXXXXXXX',
         routingNumber: 'XXXXXXXXX'   
-    },
+    }
 
-
+    
 ]
 
 export default userData;

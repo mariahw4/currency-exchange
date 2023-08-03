@@ -7,21 +7,26 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useState } from 'react';
 
 function TotalValue() {
-    console.log(userData)
+    // console.log(userData)
 
-    const [totalValue, setTotalValue] = useState(0);
-    const [USD_value, setUSD_value] = useState(500);
-    const [EUR_value, setEUR_value] = useState(800);
-    const [CHF_value, setCHF_value] = useState(1000);
+    const [checked, setChecked] = useState(false);
+   
 
-    console.log('dollars value', USD_value)
+    const [totalValueUSD, setTotalValueUSD] = useState(0);
+    const [totalValueEUR, setTotalValuEUR] = useState(0);
+    const [totalValueCHF, setTotalValueCHF] = useState(0);
 
-    const handleTotalValue = () => {
 
-        if(userData.currency === 'USD') {
-            setUSD_value(userData.amount)
-        }
-        
+
+    // const [USD_value, setUSD_value] = useState(500);
+    // const [EUR_value, setEUR_value] = useState(800);
+    // const [CHF_value, setCHF_value] = useState(1000);
+
+    // console.log('dollars value', USD_value)
+
+    const handleTotalValueUSD = () => {
+
+    
     }
 
     const USDtoEUR = amount => {
@@ -61,46 +66,69 @@ function TotalValue() {
 
 
 
-    console.log('total value?', handleTotalValue)
+    // console.log('total value?', handleTotalValueUSD)
 
     const handleCurrencyChange = async() => {
         // this will chance the  totalValue of wallet from one currency to the next 
           }
 
-    const [radioValue, setRadioValue] = useState('1');
-
-  const radios = [
-    { name: 'USD', value: '1' },
-    { name: 'EUROS', value: '2' },
-    { name: 'CHF', value: '3' },
-  ];
+       
+  ;
 
 return (
-<>
-
-   <Accordion.Header>Total Value: {totalValue} in units</Accordion.Header>
+  <>
+   <Accordion.Header>Total Value: in   </Accordion.Header>
+  {/* {userData.map((props, idx) => ( */}
         <Accordion.Body>
-          <ButtonGroup>
-            {radios.map((radio, idx) => (
-                <ToggleButton
-                key={idx}
-                id={`radio-${idx}`}
-                className='radio-btns'
-                type="radio"
-                variant={idx % 2 ? 'outline-success' : 'outline-info'}
-                name="radio"
-                value={radio.value}
-                checked={radioValue === radio.value}
-                onChange={(e) => setRadioValue(e.currentTarget.value)}
-                onClick={handleCurrencyChange}
+          <ButtonGroup aria-label="Basic example">
+            <ToggleButton 
+              id='USD'
+              type="radio"
+              variant="secondary"
+              checked={checked}
+              name='radio'
+              // value={props.id}
+              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onClick={handleCurrencyChange}
               >
-                {radio.name}
-              </ToggleButton>
-            ))}
-          </ButtonGroup>
+                USD
+            </ToggleButton>
+        </ButtonGroup>
         </Accordion.Body>
-            </>
+        <Accordion.Body>
+          <ButtonGroup aria-label="Basic example">
+            <ToggleButton 
+              id='EUR'
+              type="radio"
+              variant="secondary"
+              checked={checked}
+              name='radio'
+              // value={props.id}
+              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onClick={handleCurrencyChange}
+              >
+                EUR
+            </ToggleButton>
+        </ButtonGroup>
+        </Accordion.Body>
+        <Accordion.Body>
+          <ButtonGroup aria-label="Basic example">
+            <ToggleButton 
+              id='CHF'
+              type="radio"
+              variant="secondary"
+              checked={checked}
+              name='radio'
+              // value={props.id}
+              onChange={(e) => setChecked(e.currentTarget.checked)}
+              onClick={handleCurrencyChange}
+              >
+                CHF
+            </ToggleButton>
+        </ButtonGroup>
+        </Accordion.Body>
+{/* ))} */}
+</>
 )
-}
-
+  }
 export default TotalValue;
