@@ -98,19 +98,30 @@ function AccountHolderCard() {
   const [showAddEUR, setShowAddEUR] = useState(false);
   const [showAddCHF, setShowAddCHF] = useState(false);
   const [showSend, setShowSend] = useState(false);
-  const [showConvert, setShowConvert] = useState(false);
+  const [showConvertUSD, setShowConvertUSD] = useState(false);
+  const [showConvertEUR, setShowConvertEUR] = useState(false);
+  const [showConvertCHF, setShowConvertCHF] = useState(false);
 
 
-  const handleCloseAddUSD = () => setShowAddUSD(false);
-  const handleCloseAddEUR = () => setShowAddEUR(false);
-  const handleCloseAddCHF = () => setShowAddCHF(false);
-  const handleCloseSend = () => setShowSend(false);
-  const handleCloseConvert = () => setShowConvert(false);
+
   const handleShowAddUSD = () => setShowAddUSD(true);
   const handleShowAddEUR = () => setShowAddEUR(true);
   const handleShowAddCHF = () => setShowAddCHF(true);
+  const handleCloseAddUSD = () => setShowAddUSD(false);
+  const handleCloseAddEUR = () => setShowAddEUR(false);
+  const handleCloseAddCHF = () => setShowAddCHF(false);
+  
   const handleShowSend = () => setShowSend(true);
-  const handleShowConvert = () => setShowConvert(true);
+  const handleCloseSend = () => setShowSend(false);
+
+
+  const handleShowConvertUSD = () => setShowConvertUSD(true);
+  const handleShowConvertEUR = () => setShowConvertEUR(true);
+  const handleShowConvertCHF = () => setShowConvertCHF(true);
+  const handleCloseConvertUSD = () => setShowConvertUSD(false);
+  const handleCloseConvertEUR = () => setShowConvertEUR(false);
+  const handleCloseConvertCHF = () => setShowConvertCHF(false);
+
 
   const [AmountUSD, setAmountUSD] = useState(0);
   const [AmountEUR, setAmountEUR] = useState(0);
@@ -149,16 +160,39 @@ function AccountHolderCard() {
   // const handleSendCurrency = async () => {
   //   // this will open a modal saying we don't have function yet
   // }
+const handleConvertUSDtoEURCurrency = async (e) => {
+  e.preventDefault()
+  setUSD_value(USD_value-AmountUSD)
+  setEUR_value(EUR_value+(USDtoEUR(AmountUSD)))
+}
 
-  const handleConvertCurrency = async () => {
-    // this will open a modal with a simple currency conversion table and then will deduct currency from total and add relevant currency to appropriate total.
-  }
+const handleConvertUSDtoCHFCurrency = async (e) => {
+  e.preventDefault()
+  setUSD_value(USD_value-AmountUSD)
+  setCHF_value(CHF_value+(USDtoCHF(AmountUSD)))
+}
 
+const handleConvertEURtoUSDCurrency = async (e) => {
+  e.preventDefault()
+  setEUR_value(EUR_value-AmountEUR)
+  setUSD_value(USD_value+(EURtoUSD(AmountEUR)))
+}
+const handleConvertEURtoCHFCurrency = async (e) => {
+  e.preventDefault()
+  setEUR_value(EUR_value-AmountEUR)
+  setCHF_value(CHF_value+(EURtoCHF(AmountEUR)))
+}
+const handleConvertCHFtoUSDCurrency = async (e) => {
+  e.preventDefault()
+  setCHF_value(CHF_value-AmountCHF)
+  setUSD_value(USD_value+(CHFtoUSD(AmountCHF)))
+}
 
-
-
-
-  // console.log(userData)
+const handleConvertCHFtoEURCurrency = async (e) => {
+  e.preventDefault()
+  setCHF_value(CHF_value-AmountCHF)
+  setEUR_value(EUR_value+(CHFtoEUR(AmountCHF)))
+}
 
 
   return (
@@ -182,7 +216,7 @@ function AccountHolderCard() {
               <ToggleButton
                 id='USD'
                 type="radio"
-                variant="secondary"
+                variant="outline-primary"
                 checked={checkedUSD}
                 name='radio'
                 // value={props.id}
@@ -198,7 +232,7 @@ function AccountHolderCard() {
               <ToggleButton
                 id='EUR'
                 type="radio"
-                variant="secondary"
+                variant="outline-primary"
                 checked={checkedEUR}
                 name='radio'
                 // value={props.id}
@@ -214,7 +248,7 @@ function AccountHolderCard() {
               <ToggleButton
                 id='CHF'
                 type="radio"
-                variant="secondary"
+                variant="outline-primary"
                 checked={checkedCHF}
                 name='radio'
                 // value={props.id}
@@ -292,18 +326,26 @@ function AccountHolderCard() {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='convert-btn' variant="info" onClick={handleShowConvert}>CONVERT USD</Button>{' '}
-                <Modal show={showConvert} onHide={handleCloseConvert} animation={false}>
+                <Button id='convert-btn' variant="info" onClick={handleShowConvertUSD}>CONVERT USD</Button>{' '}
+                <Modal show={showConvertUSD} onHide={handleCloseConvertUSD} animation={false}>
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>Lets Convert some Currency!</Modal.Body>
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountUSD}
+                    onChange={(e) => setAmountUSD(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseConvert}>
+                    <Button variant="secondary" onClick={handleCloseConvertUSD}>
                       Close
                     </Button>
-                    <Button variant="primary" onClick={handleConvertCurrency}>
-                      Convert Currency
+                    <Button variant="primary" onClick={handleConvertUSDtoEURCurrency}>
+                      Convert to EUR
+                    </Button>
+                    <Button variant="primary" onClick={handleConvertUSDtoCHFCurrency}>
+                      Convert to CHF
                     </Button>
                   </Modal.Footer>
                 </Modal>
@@ -372,18 +414,26 @@ function AccountHolderCard() {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='convert-btn' variant="info" onClick={handleShowConvert}>CONVERT EUR</Button>{' '}
-                <Modal show={showConvert} onHide={handleCloseConvert} animation={false}>
+                <Button id='convert-btn' variant="info" onClick={handleShowConvertEUR}>CONVERT EUR</Button>{' '}
+                <Modal show={showConvertEUR} onHide={handleCloseConvertEUR} animation={false}>
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>Lets Convert some Currency!</Modal.Body>
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountEUR}
+                    onChange={(e) => setAmountEUR(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseConvert}>
+                    <Button variant="secondary" onClick={handleCloseConvertEUR}>
                       Close
                     </Button>
-                    <Button variant="primary" onClick={handleConvertCurrency}>
-                      Convert Currency
+                    <Button variant="primary" onClick={handleConvertEURtoUSDCurrency}>
+                      Convert to USD
+                    </Button>
+                    <Button variant="primary" onClick={handleConvertEURtoCHFCurrency}>
+                      Convert to CHF
                     </Button>
                   </Modal.Footer>
                 </Modal>
@@ -452,18 +502,26 @@ function AccountHolderCard() {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='convert-btn' variant="info" onClick={handleShowConvert}>CONVERT CHF</Button>{' '}
-                <Modal show={showConvert} onHide={handleCloseConvert} animation={false}>
+                <Button id='convert-btn' variant="info" onClick={handleShowConvertCHF}>CONVERT CHF</Button>{' '}
+                <Modal show={showConvertCHF} onHide={handleCloseConvertCHF} animation={false}>
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>Lets Convert some Currency!</Modal.Body>
+                  <Form.Control
+                    type='number'
+                    placeholder={AmountCHF}
+                    onChange={(e) => setAmountCHF(e.currentTarget.value)}
+                  />
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseConvert}>
+                    <Button variant="secondary" onClick={handleCloseConvertCHF}>
                       Close
                     </Button>
-                    <Button variant="primary" onClick={handleConvertCurrency}>
-                      Convert Currency
+                    <Button variant="primary" onClick={handleConvertCHFtoUSDCurrency}>
+                      Convert to USD
+                    </Button>
+                    <Button variant="primary" onClick={handleConvertCHFtoEURCurrency}>
+                      Convert to EUR
                     </Button>
                   </Modal.Footer>
                 </Modal>
