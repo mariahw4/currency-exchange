@@ -39,11 +39,11 @@ function App() {
              </div>
               <Routes>
                 <Route exact path="/currency-exchange/" element={<Wallet/>} />
-                <Route path="/currency-exchange/recipients" element={<Recipients/>} />
-                <Route path="/currency-exchange/invitation" element={<Invitation/>} />
-                <Route path="/currency-exchange/about" element={<About/>} />
-                <Route path="/currency-exchange/faq" element={<FAQ/>} />
-                <Route path="/currency-exchange/legal" element={<Legal/>} />
+                <Route path="/recipients" element={<Recipients/>} />
+                <Route path="/invitation" element={<Invitation/>} />
+                <Route path="/about" element={<About/>} />
+                <Route path="/faq" element={<FAQ/>} />
+                <Route path="/legal" element={<Legal/>} />
               </Routes>
             </Col>
           </Row>
