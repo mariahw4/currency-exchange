@@ -18,7 +18,7 @@ function AccountHolderCard() {
 
   // total value functions and currency conversion
 
-  const [checkedUSD, setCheckedUSD] = useState(false);
+  const [checkedUSD, setCheckedUSD] = useState(true);
   const [checkedEUR, setCheckedEUR] = useState(false);
   const [checkedCHF, setCheckedCHF] = useState(false);
 
@@ -27,9 +27,9 @@ function AccountHolderCard() {
   const [totalValueEUR, setTotalValueEUR] = useState(2295);
   const [totalValueCHF, setTotalValueCHF] = useState(2208);
 
-  const [totalValue, setTotalValue] = useState(0)
-  const [currencyUnits, setCurrencyUnits] = useState('')
-  const [currencySymbol, setCurrencySymbol] = useState('')
+  const [totalValue, setTotalValue] = useState(totalValueUSD)
+  const [currencyUnits, setCurrencyUnits] = useState('USD')
+  const [currencySymbol, setCurrencySymbol] = useState('$')
 
   const handleTotalValueUSD = () => {
 
@@ -53,7 +53,7 @@ function AccountHolderCard() {
     setCurrencySymbol('₣')
   }
 
-
+// functions to convert between currencies with current exchange rates 
   const USDtoEUR = amount => {
     let USDtoEUR_rate = .91
     let result = amount * USDtoEUR_rate
@@ -200,17 +200,16 @@ const handleConvertCHFtoEURCurrency = async (e) => {
 
 
 
-      <Accordion defaultActiveKey="0" flush>
+      <Accordion defaultActiveKey="1" flush>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
             <Col>
               Total Value: {currencySymbol}{totalValue} in {currencyUnits}
             </Col>
             <Col>
-              <p className='details'>expand to toggle Wallet Total</p>
+              <p className='details'>expand to view wallet total in other currencies</p>
             </Col>
           </Accordion.Header>
-          {/* {userData.map((props, idx) => ( */}
           <Accordion.Body>
             <ButtonGroup aria-label="Basic example">
               <ToggleButton
@@ -219,7 +218,6 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                 variant="outline-primary"
                 checked={checkedUSD}
                 name='radio'
-                // value={props.id}
                 onChange={(e) => setCheckedUSD(e.currentTarget.checked)}
                 onClick={handleTotalValueUSD}
               >
@@ -235,7 +233,6 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                 variant="outline-primary"
                 checked={checkedEUR}
                 name='radio'
-                // value={props.id}
                 onChange={(e) => setCheckedEUR(e.currentTarget.checked)}
                 onClick={handleTotalValueEUR}
               >
@@ -251,7 +248,6 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                 variant="outline-primary"
                 checked={checkedCHF}
                 name='radio'
-                // value={props.id}
                 onChange={(e) => setCheckedCHF(e.currentTarget.checked)}
                 onClick={handleTotalValueCHF}
               >
@@ -259,7 +255,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
               </ToggleButton>
             </ButtonGroup>
           </Accordion.Body>
-          {/* ))} */}
+         
 
         </Accordion.Item>
         <Container>

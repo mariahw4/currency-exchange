@@ -38,7 +38,7 @@ function App() {
               <h1>Currency Exchange App</h1>
              </div>
               <Routes>
-                <Route exact path="/" element={<Wallet/>} />
+                <Route exact path="/currency-exchange" element={<Wallet/>} />
                 <Route path="/recipients" element={<Recipients/>} />
                 <Route path="/invitation" element={<Invitation/>} />
                 <Route path="/about" element={<About/>} />
