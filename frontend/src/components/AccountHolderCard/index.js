@@ -291,7 +291,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                       <p>Account Number: {userData[0].accountNumber} </p>
                       <p>Wire Transfer Number: {userData[0].wireTransfer} </p>
                       <p>Routing Number: {userData[0].routingNumber}</p>
-                      <a href='/faq'>Learn More</a>
+                      <a href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')" >Learn More</a>
                     </Col>
                   </Row>
                 </Container>
@@ -351,7 +351,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='more-btn' variant="info" href='/faq'>MORE</Button>{' '}
+                <Button id='more-btn' variant="info" href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')">MORE</Button>{' '}
 
               </Accordion.Body>
             </Accordion.Item>
@@ -378,7 +378,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                       <p>Account Number: {userData[1].accountNumber} </p>
                       <p>Wire Transfer Number: {userData[1].wireTransfer} </p>
                       <p>Routing Number: {userData[1].routingNumber}</p>
-                      <a href='/faq'>Learn More</a>
+                      <a href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')" >Learn More</a>
                     </Col>
                   </Row>
                 </Container>
@@ -438,7 +438,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='more-btn' variant="info" href='/faq'>MORE</Button>{' '}
+                <Button id='more-btn' variant="info" href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')">MORE</Button>{' '}
 
               </Accordion.Body>
             </Accordion.Item>
@@ -465,7 +465,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                       <p>Account Number: {userData[2].accountNumber} </p>
                       <p>Wire Transfer Number: {userData[2].wireTransfer} </p>
                       <p>Routing Number: {userData[2].routingNumber}</p>
-                      <a href='/faq'>Learn More</a>
+                      <a href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')" >Learn More</a>
                     </Col>
                   </Row>
                 </Container>
@@ -525,7 +525,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                     </Button>
                   </Modal.Footer>
                 </Modal>
-                <Button id='more-btn' variant="info" href='/faq'>MORE</Button>{' '}
+                <Button id='more-btn' variant="info" href='/currency-exchange/faq' onClick="window.open('/currency-exchange/faq', '_self')">MORE</Button>{' '}
 
               </Accordion.Body>
             </Accordion.Item>

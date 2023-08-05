@@ -38,12 +38,12 @@ function App() {
               <h1>Currency Exchange App</h1>
              </div>
               <Routes>
-                <Route exact path="/currency-exchange" element={<Wallet/>} />
-                <Route path="/recipients" element={<Recipients/>} />
-                <Route path="/invitation" element={<Invitation/>} />
-                <Route path="/about" element={<About/>} />
-                <Route path="/faq" element={<FAQ/>} />
-                <Route path="/legal" element={<Legal/>} />
+                <Route exact path="/currency-exchange/" element={<Wallet/>} />
+                <Route path="/currency-exchange/recipients" element={<Recipients/>} />
+                <Route path="/currency-exchange/invitation" element={<Invitation/>} />
+                <Route path="/currency-exchange/about" element={<About/>} />
+                <Route path="/currency-exchange/faq" element={<FAQ/>} />
+                <Route path="/currency-exchange/legal" element={<Legal/>} />
               </Routes>
             </Col>
           </Row>

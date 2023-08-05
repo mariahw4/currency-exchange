@@ -9,7 +9,7 @@ function Links() {
     <Container>
       <Navbar className="bg-body-tertiary">
         <Container>
-            <LinkContainer to="/currency-exchange">
+            <LinkContainer to="/currency-exchange/">
           <Navbar.Brand>Balances</Navbar.Brand>
             </LinkContainer>
         </Container>
@@ -17,7 +17,7 @@ function Links() {
       <br />
       <Navbar className="bg-body-tertiary">
         <Container>
-            <LinkContainer to='/recipients'>
+            <LinkContainer to='/currency-exchange/recipients'>
 
           <Navbar.Brand >Recipients</Navbar.Brand>
             </LinkContainer>
@@ -26,7 +26,7 @@ function Links() {
       <br />
       <Navbar className="bg-body-tertiary">
         <Container>
-        <LinkContainer to='/invitation'>
+        <LinkContainer to='/currency-exchange/invitation'>
           <Navbar.Brand >Invite a Friend</Navbar.Brand>
           </LinkContainer>
         </Container>
@@ -35,7 +35,7 @@ function Links() {
       <br />
       <Navbar className="bg-body-tertiary">
         <Container>
-        <LinkContainer to='/about'>
+        <LinkContainer to='/currency-exchange/about'>
           <Navbar.Brand >About</Navbar.Brand>
           </LinkContainer>
         </Container>
@@ -43,7 +43,7 @@ function Links() {
       <br />
       <Navbar className="bg-body-tertiary">
         <Container>
-        <LinkContainer to='/faq'>
+        <LinkContainer to='/currency-exchange/faq'>
           <Navbar.Brand >FAQ</Navbar.Brand>
           </LinkContainer>
         </Container>
@@ -51,7 +51,7 @@ function Links() {
       <br />
       <Navbar className="bg-body-tertiary">
         <Container>
-            <LinkContainer to='/legal'>
+            <LinkContainer to='/currency-exchange/legal'>
 
           <Navbar.Brand>Legal</Navbar.Brand>
             </LinkContainer>
