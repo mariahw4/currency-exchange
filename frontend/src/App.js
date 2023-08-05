@@ -44,6 +44,7 @@ function App() {
                 <Route path="/about" element={<About/>} />
                 <Route path="/faq" element={<FAQ/>} />
                 <Route path="/legal" element={<Legal/>} />
+                <Route path="*" element={<FAQ/>} />
               </Routes>
             </Col>
           </Row>

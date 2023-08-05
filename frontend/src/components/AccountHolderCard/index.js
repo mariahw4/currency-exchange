@@ -53,7 +53,7 @@ function AccountHolderCard() {
     setCurrencySymbol('₣')
   }
 
-// functions to convert between currencies with current exchange rates 
+  // functions to convert between currencies with current exchange rates 
   const USDtoEUR = amount => {
     let USDtoEUR_rate = .91
     let result = amount * USDtoEUR_rate
@@ -110,7 +110,7 @@ function AccountHolderCard() {
   const handleCloseAddUSD = () => setShowAddUSD(false);
   const handleCloseAddEUR = () => setShowAddEUR(false);
   const handleCloseAddCHF = () => setShowAddCHF(false);
-  
+
   const handleShowSend = () => setShowSend(true);
   const handleCloseSend = () => setShowSend(false);
 
@@ -164,45 +164,45 @@ function AccountHolderCard() {
   //   // this will open a modal saying we don't have function yet
   // }
 
-const handleConvertUSDtoEURCurrency = async (e) => {
-  e.preventDefault()
-  setUSD_value(USD_value-AmountUSD)
-  setEUR_value(EUR_value+(USDtoEUR(AmountUSD)))
-  handleCloseConvertUSD()
-}
+  const handleConvertUSDtoEURCurrency = async (e) => {
+    e.preventDefault()
+    setUSD_value(USD_value - AmountUSD)
+    setEUR_value(EUR_value + (USDtoEUR(AmountUSD)))
+    handleCloseConvertUSD()
+  }
 
-const handleConvertUSDtoCHFCurrency = async (e) => {
-  e.preventDefault()
-  setUSD_value(USD_value-AmountUSD)
-  setCHF_value(CHF_value+(USDtoCHF(AmountUSD)))
-  handleCloseConvertUSD()
-}
+  const handleConvertUSDtoCHFCurrency = async (e) => {
+    e.preventDefault()
+    setUSD_value(USD_value - AmountUSD)
+    setCHF_value(CHF_value + (USDtoCHF(AmountUSD)))
+    handleCloseConvertUSD()
+  }
 
-const handleConvertEURtoUSDCurrency = async (e) => {
-  e.preventDefault()
-  setEUR_value(EUR_value-AmountEUR)
-  setUSD_value(USD_value+(EURtoUSD(AmountEUR)))
-  handleCloseConvertEUR()
-}
-const handleConvertEURtoCHFCurrency = async (e) => {
-  e.preventDefault()
-  setEUR_value(EUR_value-AmountEUR)
-  setCHF_value(CHF_value+(EURtoCHF(AmountEUR)))
-  handleCloseConvertEUR()
-}
-const handleConvertCHFtoUSDCurrency = async (e) => {
-  e.preventDefault()
-  setCHF_value(CHF_value-AmountCHF)
-  setUSD_value(USD_value+(CHFtoUSD(AmountCHF)))
-  handleCloseConvertCHF()
-}
+  const handleConvertEURtoUSDCurrency = async (e) => {
+    e.preventDefault()
+    setEUR_value(EUR_value - AmountEUR)
+    setUSD_value(USD_value + (EURtoUSD(AmountEUR)))
+    handleCloseConvertEUR()
+  }
+  const handleConvertEURtoCHFCurrency = async (e) => {
+    e.preventDefault()
+    setEUR_value(EUR_value - AmountEUR)
+    setCHF_value(CHF_value + (EURtoCHF(AmountEUR)))
+    handleCloseConvertEUR()
+  }
+  const handleConvertCHFtoUSDCurrency = async (e) => {
+    e.preventDefault()
+    setCHF_value(CHF_value - AmountCHF)
+    setUSD_value(USD_value + (CHFtoUSD(AmountCHF)))
+    handleCloseConvertCHF()
+  }
 
-const handleConvertCHFtoEURCurrency = async (e) => {
-  e.preventDefault()
-  setCHF_value(CHF_value-AmountCHF)
-  setEUR_value(EUR_value+(CHFtoEUR(AmountCHF)))
-  handleCloseConvertCHF()
-}
+  const handleConvertCHFtoEURCurrency = async (e) => {
+    e.preventDefault()
+    setCHF_value(CHF_value - AmountCHF)
+    setEUR_value(EUR_value + (CHFtoEUR(AmountCHF)))
+    handleCloseConvertCHF()
+  }
 
 
   return (
@@ -262,7 +262,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
               </ToggleButton>
             </ButtonGroup>
           </Accordion.Body>
-         
+
 
         </Accordion.Item>
         <Container>
