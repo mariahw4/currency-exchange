@@ -9,7 +9,7 @@ function Links() {
     <Container>
       <Navbar className="bg-body-tertiary">
         <Container>
-            <LinkContainer to="/">
+            <LinkContainer to="/currency-exchange">
           <Navbar.Brand>Balances</Navbar.Brand>
             </LinkContainer>
         </Container>
