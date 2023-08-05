@@ -140,6 +140,7 @@ function AccountHolderCard() {
 
     setUSD_value(Number(USD_value) + Number(AmountUSD))
 
+    handleCloseAddUSD()
   }
 
   const handleAddEURCurrency = async (e) => {
@@ -147,6 +148,7 @@ function AccountHolderCard() {
 
     setEUR_value(Number(EUR_value) + Number(AmountEUR))
 
+    handleCloseAddEUR()
 
   }
   const handleAddCHFCurrency = async (e) => {
@@ -154,52 +156,57 @@ function AccountHolderCard() {
 
     setCHF_value(Number(CHF_value) + Number(AmountCHF))
 
+    handleCloseAddCHF()
 
   }
 
   // const handleSendCurrency = async () => {
   //   // this will open a modal saying we don't have function yet
   // }
+
 const handleConvertUSDtoEURCurrency = async (e) => {
   e.preventDefault()
   setUSD_value(USD_value-AmountUSD)
   setEUR_value(EUR_value+(USDtoEUR(AmountUSD)))
+  handleCloseConvertUSD()
 }
 
 const handleConvertUSDtoCHFCurrency = async (e) => {
   e.preventDefault()
   setUSD_value(USD_value-AmountUSD)
   setCHF_value(CHF_value+(USDtoCHF(AmountUSD)))
+  handleCloseConvertUSD()
 }
 
 const handleConvertEURtoUSDCurrency = async (e) => {
   e.preventDefault()
   setEUR_value(EUR_value-AmountEUR)
   setUSD_value(USD_value+(EURtoUSD(AmountEUR)))
+  handleCloseConvertEUR()
 }
 const handleConvertEURtoCHFCurrency = async (e) => {
   e.preventDefault()
   setEUR_value(EUR_value-AmountEUR)
   setCHF_value(CHF_value+(EURtoCHF(AmountEUR)))
+  handleCloseConvertEUR()
 }
 const handleConvertCHFtoUSDCurrency = async (e) => {
   e.preventDefault()
   setCHF_value(CHF_value-AmountCHF)
   setUSD_value(USD_value+(CHFtoUSD(AmountCHF)))
+  handleCloseConvertCHF()
 }
 
 const handleConvertCHFtoEURCurrency = async (e) => {
   e.preventDefault()
   setCHF_value(CHF_value-AmountCHF)
   setEUR_value(EUR_value+(CHFtoEUR(AmountCHF)))
+  handleCloseConvertCHF()
 }
 
 
   return (
     <>
-
-
-
       <Accordion defaultActiveKey="1" flush>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
@@ -295,7 +302,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   </Modal.Header>
                   <Form.Control
                     type='number'
-                    placeholder={AmountUSD}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountUSD(e.currentTarget.value)}
                   />
                   <Modal.Footer>
@@ -327,10 +334,9 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>Lets Convert some Currency!</Modal.Body>
                   <Form.Control
                     type='number'
-                    placeholder={AmountUSD}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountUSD(e.currentTarget.value)}
                   />
                   <Modal.Footer>
@@ -383,7 +389,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   </Modal.Header>
                   <Form.Control
                     type='number'
-                    placeholder={AmountEUR}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountEUR(e.currentTarget.value)}
                   />
                   <Modal.Footer>
@@ -415,10 +421,9 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>Lets Convert some Currency!</Modal.Body>
                   <Form.Control
                     type='number'
-                    placeholder={AmountEUR}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountEUR(e.currentTarget.value)}
                   />
                   <Modal.Footer>
@@ -471,7 +476,7 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   </Modal.Header>
                   <Form.Control
                     type='number'
-                    placeholder={AmountCHF}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountCHF(e.currentTarget.value)}
                   />
                   <Modal.Footer>
@@ -503,10 +508,9 @@ const handleConvertCHFtoEURCurrency = async (e) => {
                   <Modal.Header closeButton>
                     <Modal.Title>Convert Currency</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>Lets Convert some Currency!</Modal.Body>
                   <Form.Control
                     type='number'
-                    placeholder={AmountCHF}
+                    placeholder='enter value here'
                     onChange={(e) => setAmountCHF(e.currentTarget.value)}
                   />
                   <Modal.Footer>
