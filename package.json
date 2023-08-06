@@ -1,0 +1,25 @@
+{
+  "name": "currency-exchange",
+  "version": "1.0.0",
+  "description": "React app",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd frontend && npm run test",
+    "deploy":  "cd frontend && npm run deploy",
+    "start": "cd frontend && npm run start",
+    "predeploy": "cd frontend && npm run predeploy",
+    "build": "cd frontend && npm run build",
+    "eject": "cd frontend && npm run eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariahw4/currency-exchange.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariahw4/currency-exchange/issues"
+  },
+  "homepage": "https://github.com/mariahw4/currency-exchange"
+}
