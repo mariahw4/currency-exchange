@@ -6,7 +6,7 @@
   "scripts": {
     "install": "cd frontend && npm i",
     "test": "cd frontend && npm run test",
-    "deploy":  "cd frontend && npm run deploy",
+    "deploy": "cd frontend && npm run deploy",
     "start": "cd frontend && npm run start",
     "predeploy": "cd frontend && npm run predeploy",
     "build": "cd frontend && npm run build",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/mariahw4/currency-exchange/issues"
   },
-  "homepage": "currency-exchange-station.netlify.app"
+  "homepage": "https://mariahw4.github.io/currency-exchange/",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
 }
